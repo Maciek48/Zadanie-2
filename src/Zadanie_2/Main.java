@@ -34,7 +34,7 @@ public class Main {
         peopleFromWarsaw.storeToFile("youngPeopleFromWarsaw.txt", p -> p.getAge() < 30, p -> p.getName() + ";" + p.getAge() + ";" + p.getCity());
         peopleFromWarsaw.storeToFile("warsawPeople.txt");
 
-        ObjectContainer<Person> youngWarsawPeople = ObjectContainer.fromFile("youngPeopleFromWarsaw.txt");
+        ObjectContainer<Person> youngWarsawPeople = ObjectContainer.fromFile("warsawPeople.txt");
         List<Person> allPeopleFromFIle = youngWarsawPeople.getWithFilter(p -> true);
         System.out.println("\nWszystkie mlode osoby z Warsaw z pliku:");
         for (Person person : allPeopleFromFIle) {
