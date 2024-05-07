@@ -29,8 +29,9 @@ public class Main {
             System.out.println(person.getName() + " z " + person.getCity() + ", wiek: " + person.getAge());
         }
 
-        SerializablePredicate<Person> predicate = p -> p.getAge() < 30;
-        peopleFromWarsaw.storeToFile("youngPeopleFromWarsaw.txt", predicate);
+        //SerializablePredicate<Person> predicate = p -> p.getAge() < 30;
+        //Tutaj jest blad przy probie zapisu danych
+        peopleFromWarsaw.storeToFile("youngPeopleFromWarsaw.txt", p -> p.getAge() < 30, p -> p.getName() + ";" + p.getAge() + ";" + p.getCity());
         peopleFromWarsaw.storeToFile("warsawPeople.txt");
 
         ObjectContainer<Person> youngWarsawPeople = ObjectContainer.fromFile("youngPeopleFromWarsaw.txt");
