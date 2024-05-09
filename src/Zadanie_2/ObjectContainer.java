@@ -111,17 +111,24 @@ public class ObjectContainer<T extends Serializable> implements Serializable {
         return result;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         ObjectContainer<?> that = (ObjectContainer<?>) o;
-        return Objects.equals(object, that.object) &&
-                Objects.equals(next, that.next);
+
+        if (!Objects.equals(object, that.object)) return false;
+        if (!Objects.equals(next, that.next)) return false;
+        return Objects.equals(condition, that.condition);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(object, next, condition);
+        int result = object != null ? object.hashCode() : 0;
+        result = 31 * result + (next != null ? next.hashCode() : 0);
+        result = 31 * result + (condition != null ? condition.hashCode() : 0);
+        return result;
     }
 }
